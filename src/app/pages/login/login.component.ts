@@ -22,7 +22,7 @@ export class LoginComponent {
 
   login(): void {
     const authUrl = `${this.cognitoDomain}/oauth2/authorize?response_type=${this.responseType}&client_id=${this.clientId}&redirect_uri=${encodeURIComponent(this.redirectUri)}&scope=${encodeURIComponent(this.scope)}`;
-    window.location.href = authUrl; // Redireciona o usuário para o Hosted UI
+    window.location.href = authUrl; 
   }
 
 }
