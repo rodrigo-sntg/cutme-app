@@ -1,0 +1,65 @@
+<div class="dashboard">
+    <h1 class="dashboard__title">Dashboard</h1>
+  
+    <div class="dashboard__content">
+        <div *ngIf="loading" class="upload-section__progress">
+            <div class="upload-section__progress-bar"></div>
+          </div>
+      <div class="upload-section">
+        <h2 class="upload-section__title">Novo Envio</h2>
+        
+        <div class="upload-section__form">
+          <input type="file" id="file-input" (change)="handleFileInput($event)" class="upload-section__input" accept=".mp4,.avi,.mov">
+          <label for="file-input" class="upload-section__label">
+            <i class="fas fa-upload"></i> Escolher Arquivo
+          </label>
+          <button (click)="uploadFile()" [disabled]="loading || !newFile" class="upload-section__button">
+            <span *ngIf="!loading">Enviar Arquivo</span>
+            <span *ngIf="loading">Enviando...</span>
+          </button>
+          <span *ngIf="newFile" class="upload-section__filename">
+              {{ newFile.name }}
+          </span>
+        </div>
+        
+      </div>
+  
+      <div class="uploads-section">
+        <h2 class="uploads-section__title">Meus Envios</h2>
+        <div *ngIf="uploads.length > 0; else noUploads">
+          <table class="uploads-section__table">
+            <thead class="uploads-section__table-head">
+              <tr>
+                <th class="uploads-section__table-header">Nome do Arquivo</th>
+                <th class="uploads-section__table-header">Status</th>
+                <th class="uploads-section__table-header">Ações</th>
+                <th class="uploads-section__table-header">Data</th>
+              </tr>
+            </thead>
+            <tbody class="uploads-section__table-body">
+              <tr *ngFor="let upload of uploads" class="uploads-section__table-row">
+                <td class="uploads-section__table-cell">{{ upload.uniqueFileName }}</td>
+                <td class="uploads-section__table-cell">
+                  <span class="status" [class.status--pending]="upload.status === 'PROCESSING'" [class.status--success]="upload.status === 'PROCESSED'" [class.status--error]="upload.status === 'error'">
+                    {{ upload.status === 'PROCESSING' ? 'Pendente' : upload.status === 'PROCESSED' ? 'Sucesso' : 'Erro' }}
+                  </span>
+                </td>
+                <td class="uploads-section__table-cell">
+                  <button *ngIf="upload.originalFileUrl" (click)="downloadFile(upload.originalFileUrl, 'original')" class="uploads-section__table-button uploads-section__table-button--download">
+                    <i class="fas fa-download"></i> Original
+                  </button>
+                  <button *ngIf="upload.processedFileUrl" (click)="downloadFile(upload.processedFileUrl, 'processed')" class="uploads-section__table-button uploads-section__table-button--download">
+                    <i class="fas fa-download"></i> Processado
+                  </button>
+                </td>
+                <td class="uploads-section__table-cell">{{ upload.createdAt | dateFormat }}                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ng-template #noUploads>
+          <p class="uploads-section__empty">Nenhum envio encontrado.</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>

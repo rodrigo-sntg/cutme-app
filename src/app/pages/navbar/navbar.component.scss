@@ -1,0 +1,40 @@
+.navbar {
+    background-color: #3498db; // Cor de fundo da navbar
+    color: #fff;
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  
+    &__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    &__logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+    }
+  
+    &__logout {
+      // Estilos para o botão de logout (se necessário)
+    }
+  
+    &__logout-button {
+      background-color: #dc3545; // Cor vermelha para o botão de logout
+      color: #fff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+  
+      &:hover {
+        background-color: #c82333; // Tom mais escuro no hover
+      }
+    }
+  }
