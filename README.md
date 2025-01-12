@@ -1,59 +1,106 @@
 # CutmeApp
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.7.
+CutmeApp is an Angular-based web application that includes authentication features and a dashboard interface.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- User Authentication System
+- Dashboard Interface
+- Responsive Navigation Bar
+- Auto-logout functionality for expired sessions
+
+## Prerequisites
+
+- Node.js (Latest LTS version recommended)
+- Angular CLI version 19.0.7
+- A modern web browser
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone [repository-url]
+cd cutme-app
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+## Development
+
+To start the development server:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Project Structure
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The main components of the application include:
 
-```bash
-ng generate component component-name
-```
+- `AppComponent`: Root component with authentication token validation
+- `LoginComponent`: Handles user authentication
+- `DashboardComponent`: Main dashboard interface
+- `HomeComponent`: Home page component
+- `NavbarComponent`: Navigation bar with authentication status
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Authentication
 
-```bash
-ng generate --help
-```
+The application includes an authentication system that:
+- Manages user login/logout
+- Automatically checks token validity every 5 minutes
+- Implements automatic logout when the token expires
 
-## Building
+## Testing
 
-To build the project run:
+### Unit Tests
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Run unit tests via [Karma](https://karma-runner.github.io):
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+### End-to-End Tests
 
-For end-to-end (e2e) testing, run:
+Run end-to-end tests:
 
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Note: You'll need to set up your preferred e2e testing framework as it's not included by default.
 
-## Additional Resources
+## Building for Production
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+To build the project:
+
+```bash
+ng build
+```
+
+The build artifacts will be stored in the `dist/` directory.
+
+## Additional Commands
+
+Generate new components:
+```bash
+ng generate component component-name
+```
+
+For more Angular CLI commands:
+```bash
+ng generate --help
+```
+
+## Further Help
+
+For more information on the Angular CLI, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## License
+
+[Add your license information here]
